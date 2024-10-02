@@ -5,9 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body>
-    
+    <div class="container">
+        <!-- search section -->
+        <div class="searcth-section">
+            <div class="input-wrapper">
+                <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <input type="search" placeholder="Enter a city name" class="search-input">
+            </div>
+            <button class="location-button"><span><i class="fa-solid fa-location-crosshairs"></i></span></button>
+        </div>
+
+        <!-- weather section -->
+
+        <div class="weather-section">
+
+            <!-- current weather -->
+
+            <div class="current-weather">
+                <img src="iconImage/clouds.svg" class="weather-icon">
+                <h2 class="temperature">20<span>&deg;C</span></h2>
+                <p class="descriptions">Partly cloudy</p>
+            </div>
+
+            <!-- hourly weather forecast list -->
+
+            <div class="hourly-weather">
+                <ul class="weather-list">
+                    <li class="weather-item">
+                        <p class="time">00:00</p>
+                        <img src="iconImage/clouds.svg" class="weather-icon">
+                        <p class="tempareture">20&deg;</p>
+                    </li>
+                    <li class="weather-item">
+                        <p class="time">00:00</p>
+                        <img src="iconImage/clouds.svg" class="weather-icon">
+                        <p class="tempareture">20&deg;</p>
+                    </li>
+
+                    <li class="weather-item">
+                        <p class="time">00:00</p>
+                        <img src="iconImage/clouds.svg" class="weather-icon">
+                        <p class="tempareture">20&deg;</p>
+                    </li>
+
+                    <li class="weather-item">
+                        <p class="time">00:00</p>
+                        <img src="iconImage/clouds.svg" class="weather-icon">
+                        <p class="tempareture">20&deg;</p>
+                    </li>
+
+                    <li class="weather-item">
+                        <p class="time">00:00</p>
+                        <img src="iconImage/clouds.svg" class="weather-icon">
+                        <p class="tempareture">20&deg;</p>
+                    </li>
+
+                    <li class="weather-item">
+                        <p class="time">00:00</p>
+                        <img src="iconImage/clouds.svg" class="weather-icon">
+                        <p class="tempareture">20&deg;</p>
+                    </li>
+
+                    <li class="weather-item"></li>
+                        <p class="time">00:00</p>
+                        <img src="iconImage/clouds.svg" class="weather-icon">
+                        <p class="tempareture">20&deg;</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
