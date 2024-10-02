@@ -28,7 +28,10 @@ async function getWeatherDetails(cityName){
         currentWeatherDiv.querySelector('.temperature').innerHTML = `${temperature}<span>&deg;C</span>`;
         currentWeatherDiv.querySelector('.weather-icon').src = `iconImage/${weatherIcon}.svg`;
         currentWeatherDiv.querySelector('.descriptions').innerText = description;
-        console.log(data);
+
+
+        const combinedHourlyData = [...data.forecast.forecastday[0].hour, ...data.forecast.forecastday[1].hour];
+       displayHourlyForecast(combinedHourlyData);
     } catch(error){
         console.log(error);
     }
