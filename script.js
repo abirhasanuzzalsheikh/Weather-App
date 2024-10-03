@@ -38,6 +38,7 @@ function displayHourlyForecast(hourlyData){
 }
 
 async function getWeatherDetails(API_URL){
+    window.innerWidth <= 768 && searchInput.blur();
     try{
         const response = await fetch(API_URL);
         const data = await response.json();
@@ -54,6 +55,8 @@ async function getWeatherDetails(API_URL){
 
         const combinedHourlyData = [...data.forecast.forecastday[0].hour, ...data.forecast.forecastday[1].hour];
        displayHourlyForecast(combinedHourlyData);
+
+       searchInput.value = data.location.name;
     } catch(error){
         console.log(error);
     }
