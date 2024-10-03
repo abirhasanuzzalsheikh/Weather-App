@@ -34,11 +34,12 @@ function displayHourlyForecast(hourlyData){
                         <img src="iconImage/${weatherIcon}.svg" class="weather-icon">
                         <p class="tempareture">${temperature}&deg;</p>
                     </li>`;
-  }).join('');;
+  }).join('');
 }
 
 async function getWeatherDetails(API_URL){
     window.innerWidth <= 768 && searchInput.blur();
+    document.body.classList.remove('show-no-result');
     try{
         const response = await fetch(API_URL);
         const data = await response.json();
@@ -58,7 +59,7 @@ async function getWeatherDetails(API_URL){
 
        searchInput.value = data.location.name;
     } catch(error){
-        console.log(error);
+       document.body.classList.add('show-no-result');
     }
 }
 
