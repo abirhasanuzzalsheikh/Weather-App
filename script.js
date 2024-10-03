@@ -1,6 +1,7 @@
 const searchInput = document.querySelector('.search-input');
 const currentWeatherDiv = document.querySelector('.current-weather');
 const hourlyWeatherDiv = document.querySelector('.hourly-weather .weather-list');
+const locationButton = document.querySelector('.location-button');
 
 const API_KEY = '44753763a6be4204a1492957240210';
 const weatherCode = {
@@ -66,4 +67,12 @@ searchInput.addEventListener('keyup', (e)=>{
     if(e.key === 'Enter' && cityName){
        getWeatherDetails(cityName)
     }
+})
+
+locationButton.addEventListener('click', ()=>{
+    navigator.geolocation.getCurrentPosition(position=>{
+        console.log(position)
+    },error=>{
+        alert('error location')
+    })
 })
