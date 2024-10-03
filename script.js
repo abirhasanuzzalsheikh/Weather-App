@@ -10,7 +10,17 @@ const weatherCode = {
     moderate_heavy_rain:[1186,1189,1192,1195,1243,,1246],
     snow:[1066,1069,1072,1114,1117,1204,1207,1210,1213,1216,1219,1222,1225,1237,1249,1252,1255,1258,1261,1264,1279,1282],
     thunder:[1087,1279,1282],
-    thunder_rain:[1273,1276],
+    thunder_rain:[1273,1276]
+}
+
+function displayHourlyForecast(hourlyData){
+    const currentHour = new Date().setMinutes(0,0,0);
+    const next24Hours = currentHour + 24 * 60 * 60 * 1000;
+
+    const next24HoursData = hourlyData.filter(({time})=> {
+        const forecastTime = new Date(time).getTime();
+        return forecastTime >= currentHour && forecastTime <= next24Hours;
+    })
 }
 
 async function getWeatherDetails(cityName){
