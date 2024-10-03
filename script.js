@@ -1,5 +1,6 @@
 const searchInput = document.querySelector('.search-input');
 const currentWeatherDiv = document.querySelector('.current-weather');
+const hourlyWeatherDiv = document.querySelector('.hourly-weather .weather-list');
 
 const API_KEY = '44753763a6be4204a1492957240210';
 const weatherCode = {
@@ -20,7 +21,19 @@ function displayHourlyForecast(hourlyData){
     const next24HoursData = hourlyData.filter(({time})=> {
         const forecastTime = new Date(time).getTime();
         return forecastTime >= currentHour && forecastTime <= next24Hours;
-    })
+    });
+
+    hourlyWeatherDiv.innerHTML = next24HoursData.map(item => {
+    const temperature = Math.floor(item.temp_c);
+    const time = item.time;
+    const weatherIcon = Object.keys(weatherCode).find(icon=> weatherCode[icon].includes(item.condition.code));
+
+    return ` <li class="weather-item">
+                        <p class="time">${time}</p>
+                        <img src="iconImage/${weatherIcon}.svg" class="weather-icon">
+                        <p class="tempareture">${temperature}&deg;</p>
+                    </li>`;
+  }).join('');;
 }
 
 async function getWeatherDetails(cityName){
