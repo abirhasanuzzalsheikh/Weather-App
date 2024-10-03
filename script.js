@@ -25,7 +25,7 @@ function displayHourlyForecast(hourlyData){
 
     hourlyWeatherDiv.innerHTML = next24HoursData.map(item => {
     const temperature = Math.floor(item.temp_c);
-    const time = item.time;
+    const time = item.time.split(' ')[1].substring(0, 5);
     const weatherIcon = Object.keys(weatherCode).find(icon=> weatherCode[icon].includes(item.condition.code));
 
     return ` <li class="weather-item">
