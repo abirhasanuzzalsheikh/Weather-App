@@ -86,3 +86,5 @@ locationButton.addEventListener('click', ()=>{
         alert('error location')
     })
 })
+
+setUpWeatherRequest('dhaka');
