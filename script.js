@@ -37,9 +37,7 @@ function displayHourlyForecast(hourlyData){
   }).join('');;
 }
 
-async function getWeatherDetails(cityName){
-    const API_URL = ` http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${cityName}&days=2`;
-
+async function getWeatherDetails(API_URL){
     try{
         const response = await fetch(API_URL);
         const data = await response.json();
@@ -61,16 +59,24 @@ async function getWeatherDetails(cityName){
     }
 }
 
+function setUpWeatherRequest (cityName){
+    const API_URL = ` http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${cityName}&days=2`;
+    getWeatherDetails(API_URL)
+}
+
 searchInput.addEventListener('keyup', (e)=>{
     const cityName = searchInput.value.trim();
 
     if(e.key === 'Enter' && cityName){
-       getWeatherDetails(cityName)
+       setUpWeatherRequest(cityName);
     }
 })
 
 locationButton.addEventListener('click', ()=>{
     navigator.geolocation.getCurrentPosition(position=>{
+        const {latiiude, longitude} = position.coords;
+        const API_URL = ` http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${latiiude},${longitude}&days=2`;
+        getWeatherDetails(API_URL)
         console.log(position)
     },error=>{
         alert('error location')
